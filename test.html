@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <title>LFSR test</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="lf-lfsr.js"></script>
+  </head>
+
+  <body>
+    <h1>Leap-Forward LFSR generator</h1>
+
+    <form action="javascript:void" id="lfsr-gen">
+      <fieldset>
+        <legend>Parameters</legend>
+	<div>
+	  <label for="bits">Bits (LFSR width):</label>
+	  <input type="text" name="bits" id="bits" size="4"/>
+	</div>
+	<div>
+	  <label for="taps">Taps of LFSR (e.g.: 0,2,7):</label>
+	  <input type="text" name="taps" id="taps" size="20"/>
+	</div>
+	<div>
+	  <label for="entropy_bits">Bits of entropy per cycle:</label>
+	  <input type="text" name="entropy_bits" id="entropy_bits" size="4"/>
+	</div>
+	<div>
+	  <input type="submit" value="Generate!"/>
+	</div>
+      </fieldset>
+    </form>
+    <h3>Feedback equations:</h3>
+    <ul id="feedback-eqns">
+    </ul>
+    <h3>Verilog code:</h3>
+    <pre id="verilog-code">
+    </pre>
+  </body>
+</html>
