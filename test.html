@@ -2,7 +2,31 @@
   <head>
     <title>LFSR test</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="matrix.js"></script>
     <script src="lf-lfsr.js"></script>
+    <script>
+
+$(function() {
+	$("form#lfsr-gen").submit(function() {
+		var bits = $('input#bits').val();
+		var taps = $.map($('input#taps').val().split(','),
+				 function(v) { return $.trim(v); });
+		var entropy_bits = $('input#entropy_bits').val();
+
+		var l = new LfLFSR(bits, taps, entropy_bits);
+		var h = l.toEqnHTMLArray();
+
+		$("ul#feedback-eqns").empty();
+		for (i in h) {
+			$("<li>"+h[i]+"</li>").appendTo("ul#feedback-eqns");
+		}
+
+		$("pre#verilog-code").text(l.toVerilog());
+		return false;
+	});
+});
+
+    </script>
   </head>
 
   <body>
